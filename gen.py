@@ -5,23 +5,43 @@ from matplotlib.widgets import Slider
 # Define the three affine transformations for the Sierpinski Triangle
 def transformation1(point):
     x, y = point
-    return x / 2, y / 2
+    return x * 0.5, y * 0.5
 
 def transformation2(point):
     x, y = point
-    return x / 2 + 0.5, y / 2
+    return x * 0.5 + 0.5, y * 0.5
 
-'''
 def transformation3(point):
     x, y = point
-    return x / 2 + 0.25, y / 2 + 0.5
-'''
+    return x * 0.5 + 0.25, y * 0.5 + 0.5
 
+def transformation4(point):
+    x, y = point
+    return x / 4 + 0.5, y / 4 + 0.5
 
+def transformation5(point):
+    x, y = point
+    return x * 0.75, y - 0.1
+
+def transformation6(point):
+    x, y = point
+    return x / 2 + 0.5, y / 2
+
+def transformation7(point):
+    x, y = point
+    return x * 1.01, y + 0.01
+
+def transformation8(point):
+    x, y = point
+    return x + 0.01, y * 1.01
 
 # List of transformations and their corresponding probabilities
-transformations = [transformation1, transformation2]
+# transformations = [transformation1, transformation2, transformation3]
+# probabilities = [1/4, 1/2, 1/4]
+
+transformations = [transformation1, transformation2, transformation3]
 probabilities = [1/3, 1/3, 1/3]
+
 
 # Function to apply one of the transformations randomly
 def apply_transform(point):
