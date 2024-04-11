@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.widgets import Slider
+import math
 
 # List of transformations and their corresponding probabilities
 # transformations = [transformation1, transformation2]
@@ -47,10 +48,11 @@ def apply_transform(point):
 # Generating points of the Sierpinski Triangle
 def generate_sierpinski(num_points):
     points = [(0, 0)]  # Initial point
-    for i in range(int(num_points / len(transformations))):
+    for i in range(num_points):
         points_ = []
-        for transform in transformations:
-            points_.append(transform(points[0 + i]))
+        for p in points:
+            for transform in transformations:
+                points_.append(transform(p))
         for p in points_:
             points.append(p)
     return points
@@ -69,7 +71,7 @@ probabilities = normalize_list(probabilities)
 fig, ax = plt.subplots()
 plt.subplots_adjust(bottom=0.25)
 ax_slider = plt.axes([0.1, 0.1, 0.8, 0.03])
-slider = Slider(ax_slider, 'Num Points', 0, 100000, valinit=1, valstep=250, valfmt='%0.0f')
+slider = Slider(ax_slider, 'Num Points', 0, 7, valinit=5, valstep=1, valfmt='%0.0f')
 
 # Update the plot when the slider value changes
 def update(val):
@@ -79,6 +81,6 @@ def update(val):
 slider.on_changed(update)
 
 # Initial plot
-plot_fractal(10000)
+plot_fractal(5)
 
 plt.show()
