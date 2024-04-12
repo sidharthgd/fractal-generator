@@ -15,6 +15,38 @@ def transformation3(point):
     x, y = point
     return x * 0.5 + 0.25, y * 0.5 + 0.5
 
+def square1(point):
+    x, y = point
+    return x / 3, y / 3
+
+def square2(point):
+    x, y = point
+    return x / 3 + 1/3, y / 3
+
+def square3(point):
+    x, y = point
+    return x / 3, y / 3 + 1/3
+
+def square4(point):
+    x, y = point
+    return x / 3 + 2/3, y / 3
+
+def square5(point):
+    x, y = point
+    return x / 3, y / 3 + 2/3
+
+def square6(point):
+    x, y = point
+    return x / 3 + 1/3, y / 3 + 2/3
+
+def square7(point):
+    x, y = point
+    return x / 3 + 2/3, y / 3 + 1/3
+
+def square8(point):
+    x, y = point
+    return x / 3 + 2/3, y / 3 + 2/3
+
 def transformation4(point):
     x, y = point
     return x / 4 + 0.5, y / 4 + 0.5
@@ -39,8 +71,8 @@ def transformation8(point):
 # transformations = [transformation1, transformation2, transformation3]
 # probabilities = [1/4, 1/2, 1/4]
 
-transformations = [transformation1, transformation2, transformation3]
-probabilities = [1/3, 1/3, 1/3]
+transformations = [square1, square2, square3, square4, square5, square6, square7, square8]
+probabilities = [1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8]
 
 
 # Function to apply one of the transformations randomly
@@ -68,7 +100,7 @@ def plot_sierpinski(num_points):
 fig, ax = plt.subplots()
 plt.subplots_adjust(bottom=0.25)
 ax_slider = plt.axes([0.1, 0.1, 0.8, 0.03])
-slider = Slider(ax_slider, 'Num Points', 0, 5000, valinit=1, valstep=250, valfmt='%0.0f')
+slider = Slider(ax_slider, 'Num Points', 0, 20000, valinit=1, valstep=250, valfmt='%0.0f')
 
 # Update the plot when the slider value changes
 def update(val):
