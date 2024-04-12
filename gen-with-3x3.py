@@ -4,7 +4,7 @@ from matplotlib.widgets import Slider
 import math
 import sys
 
-sys.stdin = open('hexagon.txt', 'r')
+sys.stdin = open('sierpinski.txt', 'r')
 
 transformations = []
 probabilities = []
@@ -47,8 +47,8 @@ def normalize_list(lst):
 
 # Generating points of the Sierpinski Triangle
 def generate_sierpinski(num_points):
-    # points = [(0, 0.5), (0.25980762113, 1), (0.25980762113, 0), (0.74019237887, 0), (0.74019237887, 1), (1, 0.5)]  # Initial point
-    points = [(0.5, 0),(-0.5, 0),(0.25980762113, 0.25),(-0.25980762113, 0.25),(0.25980762113, -0.25),(-0.25980762113, -0.25)]
+    points = [(0, 0)]
+    # points = [(0.5, 0),(-0.5, 0),(0.25980762113, 0.25),(-0.25980762113, 0.25),(0.25980762113, -0.25),(-0.25980762113, -0.25)]
     for i in range(num_points):
         points_ = []
         for p in points:
@@ -65,8 +65,10 @@ def plot_fractal(num_points):
     ax.scatter(*zip(*points), s=1, color='blue')
     ax.set_title('Fractal')
     ax.set_aspect('equal', adjustable='box')
-    ax.set_xlim(-1.1, 1.1)
-    ax.set_ylim(-1.1, 1.1)
+    # ax.set_xlim(-1.1, 1.1)
+    # ax.set_ylim(-1.1, 1.1)
+    ax.set_xlim(-0.1, 1.1)
+    ax.set_ylim(-0.1, 1.1)
     plt.draw()
 
 # Create a slider for adjusting the number of points
