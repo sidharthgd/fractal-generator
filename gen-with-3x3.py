@@ -4,10 +4,12 @@ from matplotlib.widgets import Slider
 import math
 import sys
 
-sys.stdin = open('sierpinski.txt', 'r')
+if (len(sys.argv) > 1):
+    sys.stdin = open(sys.argv[1], 'r')
 
 transformations = []
 probabilities = []
+starting_points = [(0, 0)]
 
 print("transformation is of form")
 print()
@@ -39,6 +41,16 @@ while i < int(num):
         print(e)
         print("try again")
 print(f"\nread in {int(num)} matrices")
+custom_points = input("custom starting points? y/n ")
+custom_points = (custom_points == "y")
+if custom_points:
+    starting_points.clear()
+    npoints = int(input("how many points? "))
+    for i in range(npoints):
+        p = input(f"point {i}")
+        x, y = (float(n) for n in p.split())
+        starting_points.append((x, y))
+    print(f"read in {npoints} points")
 
 def normalize_list(lst):
     print(lst)
@@ -47,7 +59,8 @@ def normalize_list(lst):
 
 # Generating points of the Sierpinski Triangle
 def generate_sierpinski(num_points):
-    points = [(0, 0)]
+    points = starting_points
+    # points = [(0, 0)]
     # points = [(0.5, 0),(-0.5, 0),(0.25980762113, 0.25),(-0.25980762113, 0.25),(0.25980762113, -0.25),(-0.25980762113, -0.25)]
     for i in range(num_points):
         points_ = []
@@ -65,10 +78,10 @@ def plot_fractal(num_points):
     ax.scatter(*zip(*points), s=1, color='blue')
     ax.set_title('Fractal')
     ax.set_aspect('equal', adjustable='box')
-    # ax.set_xlim(-1.1, 1.1)
-    # ax.set_ylim(-1.1, 1.1)
-    ax.set_xlim(-0.1, 1.1)
-    ax.set_ylim(-0.1, 1.1)
+    ax.set_xlim(-1.1, 1.1)
+    ax.set_ylim(-1.1, 1.1)
+    # ax.set_xlim(-0.1, 1.1)
+    # ax.set_ylim(-0.1, 1.1)
     plt.draw()
 
 # Create a slider for adjusting the number of points
