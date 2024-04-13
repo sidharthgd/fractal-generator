@@ -47,6 +47,30 @@ def square8(point):
     x, y = point
     return x / 3 + 2/3, y / 3 + 2/3
 
+def hex1(point):
+    x, y = point
+    return x/3 + 1/6, y/3
+
+def hex2(point):
+    x, y = point
+    return x/3 + 1/2, y/3
+
+def hex3(point):
+    x, y = point
+    return x/3, y/3 + 1/3
+
+def hex4(point):
+    x, y = point
+    return x/3 + 1/6, y/3 + 2/3
+
+def hex5(point):
+    x, y = point
+    return x/3 + 1/2, y/3 + 2/3
+
+def hex6(point):
+    x, y = point
+    return x/3 + 2/3, y/3 + 1/3
+
 def transformation4(point):
     x, y = point
     return x / 4 + 0.5, y / 4 + 0.5
@@ -71,8 +95,8 @@ def transformation8(point):
 # transformations = [transformation1, transformation2, transformation3]
 # probabilities = [1/4, 1/2, 1/4]
 
-transformations = [square1, square2, square3, square4, square5, square6, square7, square8]
-probabilities = [1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8, 1/8]
+transformations = [hex1, hex2, hex3, hex4, hex5, hex6]
+probabilities = [1/6, 1/6, 1/6, 1/6, 1/6, 1/6]
 
 
 # Function to apply one of the transformations randomly
