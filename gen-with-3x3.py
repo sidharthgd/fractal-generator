@@ -53,7 +53,6 @@ if custom_points:
     print(f"read in {npoints} points")
 
 def normalize_list(lst):
-    print(lst)
     total = sum(lst)
     return [x / total for x in lst]
 
@@ -64,7 +63,9 @@ def generate_sierpinski(num_points):
         points_ = []
         for p in points:
             for transform in transformations:
-                points.append(transform(p))
+                points_.append(transform(p))
+        for p in points_:
+            points.append(p)
     return points
 
 # Plotting the generated points
@@ -83,7 +84,10 @@ probabilities = normalize_list(probabilities)
 fig, ax = plt.subplots()
 plt.subplots_adjust(bottom=0.25)
 ax_slider = plt.axes([0.1, 0.1, 0.8, 0.03])
-slider = Slider(ax_slider, 'Num Points', 0, 7, valinit=5, valstep=1, valfmt='%0.0f')
+max_iterations = 7
+if len(transformations) > 5:
+    max_iterations = 5
+slider = Slider(ax_slider, 'Num Points', 0, max_iterations, valinit=max_iterations - 2, valstep=1, valfmt='%0.0f')
 
 # Update the plot when the slider value changes
 def update(val):
@@ -94,6 +98,6 @@ def update(val):
 slider.on_changed(update)
 
 # Initial plot
-plot_fractal(4)
+plot_fractal(max_iterations - 2)
 
 plt.show()
