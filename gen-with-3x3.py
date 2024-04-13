@@ -75,8 +75,10 @@ def plot_fractal(num_points):
     ax.scatter(*zip(*points), s=1, color='blue')
     ax.set_title('Fractal')
     ax.set_aspect('equal', adjustable='box')
-    ax.set_xlim(-0.1, 1.1)
-    ax.set_ylim(-0.1, 1.1)
+    # ax.set_xlim(-1.1, 1.1)
+    # ax.set_ylim(-1.1, 1.1)
+    ax.set_xlim(-3.1, 4.1)
+    ax.set_ylim(-0.1, 4.1)
     plt.draw()
 
 # Create a slider for adjusting the number of points
@@ -87,6 +89,7 @@ ax_slider = plt.axes([0.1, 0.1, 0.8, 0.03])
 max_iterations = 7
 if len(transformations) > 5:
     max_iterations = 5
+max_iterations = 10
 slider = Slider(ax_slider, 'Num Points', 0, max_iterations, valinit=max_iterations - 2, valstep=1, valfmt='%0.0f')
 
 # Update the plot when the slider value changes
