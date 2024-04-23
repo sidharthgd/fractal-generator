@@ -78,7 +78,7 @@ def generate_sierpinski(num_points):
 def plot_fractal(num_points):
     ax.clear()  # Clear previous plot
     points = generate_sierpinski(num_points)
-    ax.scatter(*zip(*points), s=10, color='blue')
+    ax.scatter(*zip(*points), s=1, color='blue')
     ax.set_title('Fractal')
     ax.set_aspect('equal', adjustable='box')
     ax.set_xlim(x_min, x_max)
@@ -90,10 +90,10 @@ probabilities = normalize_list(probabilities)
 fig, ax = plt.subplots()
 plt.subplots_adjust(bottom=0.25)
 ax_slider = plt.axes([0.1, 0.1, 0.8, 0.03])
-max_iterations = 7
+max_iterations = int(28 / len(transformations))
 if len(transformations) > 5:
     max_iterations = 5
-slider = Slider(ax_slider, 'Num Points', 0, max_iterations, valinit=max_iterations - 2, valstep=1, valfmt='%0.0f')
+slider = Slider(ax_slider, 'Num Points', 0, max_iterations, valinit=min(max_iterations - 2, 7), valstep=1, valfmt='%0.0f')
 
 # Update the plot when the slider value changes
 def update(val):
@@ -104,6 +104,6 @@ def update(val):
 slider.on_changed(update)
 
 # Initial plot
-plot_fractal(max_iterations - 2)
+plot_fractal(min(max_iterations - 2, 7))
 
 plt.show()
